@@ -23,6 +23,19 @@ class Matrix2x2:
         else:
             raise TypeError
 
+    def __neg__(self):
+        return Matrix2x2(-self.a_1, -self.a_2, -self.a_3, -self.a_4)
+
+    def __mul__(self, other):
+        if isinstance(other, Matrix2x2):
+            print("Use @ for matrix multiplication.")
+            return self.__matmul__(other)
+        else:
+            return Matrix2x2(self.a_1 * other, self.a_2 * other, self.a_3 * other, self.a_4 * other)
+
+    def __rmul__(self, other):
+        return self * other
+
     def __matmul__(self, other):
         if isinstance(other, Matrix2x2):
             return Matrix2x2(self.a_1 * other.a_1 + self.a_2 * other.a_3,

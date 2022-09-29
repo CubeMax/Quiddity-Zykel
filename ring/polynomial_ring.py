@@ -66,6 +66,8 @@ class Polynomial:
 
     def __eq__(self, other):
         if isinstance(other, Polynomial):
+            if self.variable_name != other.variable_name:
+                return False
             if self.degree() != other.degree():
                 return False
             for i in range(self.degree() + 1):

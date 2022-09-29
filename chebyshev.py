@@ -1,5 +1,5 @@
 
-from polynomial_ring import Polynomial
+from ring.polynomial_ring import Polynomial
 
 
 def chebyshev(n: int, delta: int = 1, variable_name: str = "x") -> Polynomial:

@@ -1,4 +1,4 @@
-from ggT import ggT
+from ring.ggT import ggT
 
 
 class RationalNumbers:

@@ -2,7 +2,7 @@
 from math import sqrt, isqrt
 from typing import Union
 
-from rational_numbers import Fraction
+from ring.rational_numbers import Fraction
 
 
 ERROR_DIFFERENT_FIELD = "Elements are from different quadratic fields!"
@@ -137,17 +137,17 @@ class ComplexQuadratic:  # z = x + y * sqrt(d)
         if x == 0 and y == 1:
             return sqrt_d_as_string
         if x == 0 and y == -1:
-            return "- " + sqrt_d_as_string
+            return "-" + sqrt_d_as_string
         if x == 0:
-            return str(y) + " " + sqrt_d_as_string
+            return str(y) + sqrt_d_as_string
         if y == 1:
             return str(x) + " + " + sqrt_d_as_string
         if y == -1:
             return str(x) + " - " + sqrt_d_as_string
         if y > 0:
-            return str(x) + " + " + str(y) + " " + sqrt_d_as_string
+            return str(x) + " + " + str(y) + sqrt_d_as_string
         if y < 0:
-            return str(x) + " - " + str(-y) + " " + sqrt_d_as_string
+            return str(x) + " - " + str(-y) + sqrt_d_as_string
 
     def get_latex(self):
         x = self.x
@@ -206,8 +206,8 @@ class ComplexQuadratic:  # z = x + y * sqrt(d)
 
 
 class Gauss(ComplexQuadratic):
-    def __init__(self, rational_part: Union[Fraction, int], sqrt_part: Union[Fraction, float], sqrt_d: int = -1):
-        super().__init__(rational_part, sqrt_part, sqrt_d)
+    def __init__(self, rational_part: Union[Fraction, int], sqrt_part: Union[Fraction, float]):
+        super().__init__(rational_part, sqrt_part, -1)
 
 
 if __name__ == "__main__":

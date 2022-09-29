@@ -1,15 +1,15 @@
 
+from ring.quadratic_field import ComplexQuadratic
+from ring.rational_numbers import Fraction
 from quiddity_cycle import QuiddityCycle
 from frieze_pattern import FriezePattern
-from quadratic_field import ComplexQuadratic
-from rational_numbers import Fraction
 from chebyshev import chebyshev
 
 show_chapter_3 = False
 show_chapter_4 = False
 show_chapter_5 = False
 show_chapter_6 = False
-show_chapter_9 = True
+show_chapter_9 = False
 show_chapter_10 = False
 
 if __name__ == "__main__":
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
         print("============")
         cycle = (3, 1) * 9
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         frieze = FriezePattern(cycle)
         print("Höhe:", frieze.height)
         print(frieze.get_tableaux_horizontal(12))
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
         print("=============")
         cycle = (ComplexQuadratic(2, 1, 3), 1) * 6
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle)
         frieze = FriezePattern(cycle)
         print("Höhe:", frieze.height)
@@ -77,23 +77,23 @@ if __name__ == "__main__":
         print("5 lambda-Quiddity-Zykel")
         print("=======================")
         cycle = (0, 0)
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         cycle = (1, 1, 1)
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         cycle = (-1, -1, -1)
-        qc = QuiddityCycle(*cycle, lamb=1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         cycle = (ComplexQuadratic(0, 1, 3), ) * 6
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         cycle = (ComplexQuadratic(0, 1, 2), 0, ComplexQuadratic(0, -1, 2), 0)
-        qc = QuiddityCycle(*cycle, lamb=1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         cycle = (ComplexQuadratic(0, 1, 5),
@@ -101,33 +101,33 @@ if __name__ == "__main__":
                  ComplexQuadratic(0, Fraction(2, 3), 5),
                  ComplexQuadratic(0, Fraction(9, 5), 5)
                  ) * 2
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is qc:", qc.is_quiddity_cycle())
 
         print()
 
         cycle = (-1, -1, -1)
-        qc = QuiddityCycle(*cycle, lamb=1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (1, 2) * 2
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (1, 3) * 3
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (ComplexQuadratic(0, 1, 2), ) * 4
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (ComplexQuadratic(0, 1, 3), ) * 6
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (ComplexQuadratic(0, 1, 3), ) * 12
-        qc = QuiddityCycle(*cycle, lamb=1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
         print()
 
@@ -149,11 +149,11 @@ if __name__ == "__main__":
         print("9 Berechnung von lambda-Quiddity-Zykeln")
         print("=======================================")
         cycle = (ComplexQuadratic(0, 1, -3), ComplexQuadratic(0, -1, -3)) * 3
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
         cycle = (ComplexQuadratic(0, -1, -3), ComplexQuadratic(0, 1, -3)) * 3
-        qc = QuiddityCycle(*cycle, lamb=-1)
+        qc = QuiddityCycle(*cycle)
         print(cycle, "is aperiodic:", not qc.is_periodic())
 
     if show_chapter_10:

@@ -1,7 +1,7 @@
-from typing import List
+from typing import List, Union
 
 from matrix import Matrix2x2 as Matrix
-from quiddity_cycle import is_quiddity_cycle
+from quiddity_cycle import QuiddityCycle, is_quiddity_cycle
 
 SPACING = 2
 
@@ -21,13 +21,13 @@ class Empty:
 
 
 class FriezePattern:
-    def __init__(self, quiddity_cycle: tuple, field=None):
+    def __init__(self, quiddity_cycle: Union[tuple, QuiddityCycle], field=None):
         self.field = field
-
-        if not is_quiddity_cycle(quiddity_cycle):
-            print("WARNING: Cycle", quiddity_cycle, "is not a (-1)-quiddity cycle!")
-        self.quiddity_cycle: tuple = quiddity_cycle
+        self.quiddity_cycle: tuple = tuple(quiddity_cycle)
         self.quiddity_length = len(quiddity_cycle)
+
+        if not is_quiddity_cycle(self.quiddity_cycle):
+            print("WARNING: Cycle", quiddity_cycle, "is not a (-1)-quiddity cycle!")
 
         self.height: int = self.quiddity_length - 3
         self.height_skew: int = self.quiddity_length
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     print(F.get_tableaux_horizontal())
     print((F.get_latex_horizontal(4)))
 
-    from quadratic_field import ComplexQuadratic
+    from ring.quadratic_field import ComplexQuadratic
     qc = (ComplexQuadratic(0, 1, -3), ComplexQuadratic(0, -1, -3)) * 3
     F = FriezePattern(qc)
     print(F.get_tableaux_horizontal())

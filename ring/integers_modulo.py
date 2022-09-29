@@ -1,4 +1,4 @@
-from ggT import bezout, ggT
+from ring.ggT import bezout, ggT
 
 
 class IntegersModulo:  # Z_pZ with p > 1
